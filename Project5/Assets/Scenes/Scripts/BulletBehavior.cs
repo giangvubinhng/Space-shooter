@@ -16,9 +16,10 @@ public class BulletBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y > screenbounds.y * 2) {
-            Destroy(this.gameObject);
+        if (transform.position.y > screenbounds.y) {
+            Pooler.Instance.destroyObject(this.gameObject, "bullet");
         }
         transform.Translate(transform.up * speed * Time.deltaTime, Space.World);
     }
+
 }

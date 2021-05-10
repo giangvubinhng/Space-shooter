@@ -121,6 +121,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44155177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44155178}
+  - component: {fileID: 44155179}
+  m_Layer: 0
+  m_Name: Pooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &44155178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44155177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44155179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44155177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32de56a939e0974ba521ecf25b322be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: SpeedUp
+    prefab: {fileID: 4319377451039259221, guid: 199d2c790f305e64cbb3892e8d1ca360,
+      type: 3}
+    size: 3
+  - tag: enemy
+    prefab: {fileID: 6822541400078867401, guid: 07d3b6bb9199a1542b343a39a96fa822,
+      type: 3}
+    size: 3
+  - tag: bullet
+    prefab: {fileID: 5261508011175514782, guid: 71c7aa7a06d970d4aba14a54cf1ef3b5,
+      type: 3}
+    size: 3
 --- !u!1 &486706300
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +192,7 @@ GameObject:
   - component: {fileID: 486706305}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +205,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486706300}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -214,7 +270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &486706305
 MonoBehaviour:
@@ -229,7 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5261508011175514782, guid: 71c7aa7a06d970d4aba14a54cf1ef3b5, type: 3}
-  shootingRate: 0.9
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +367,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1038942374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038942376}
+  - component: {fileID: 1038942375}
+  m_Layer: 0
+  m_Name: SystemController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1038942375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038942374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6748ef4bf61584a8a60b5270160e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingRate: 1
+  objectSpawnRate: 5
+  enemyDesentSpeed: 1
+  sidewingDesentSpeed: 1
+  speedUpDesentSpeed: 2
+  ship: {fileID: 486706300}
+  sideWing: {fileID: 1261339901278138544, guid: 61a88681072d62248bd2c48050f76570,
+    type: 3}
+--- !u!4 &1038942376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038942374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671998257
 GameObject:
